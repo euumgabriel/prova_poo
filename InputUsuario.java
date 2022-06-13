@@ -1,31 +1,25 @@
 import java.util.Scanner;
 
 class InputUsuario {
-    static String inputString(String prompt) {
-        Scanner scanner = new Scanner(System.in);
+    static String inputString(String prompt, Scanner scanner) {
         String resposta;
 
         System.out.print(prompt);
         resposta = scanner.nextLine();
 
-        scanner.close();
-
         return resposta;
     }
 
-    static int inputInt(String prompt) {
-        Scanner scanner = new Scanner(System.in);
+    static int inputInt(String prompt, Scanner scanner) {
         int resposta;
 
         System.out.print(prompt);
         resposta = scanner.nextInt();
 
-        scanner.close();
-
         return resposta;
     }
 
-    static String selecionaOpcao(String[] opcoes, String prompt) {
+    static String selecionaOpcao(String[] opcoes, String prompt, Scanner scanner) {
         int opcaoSelecionada;
         System.out.print(prompt);
 
@@ -34,7 +28,7 @@ class InputUsuario {
         }
 
         do {
-            opcaoSelecionada = inputInt("Escolha: ");
+            opcaoSelecionada = inputInt("Escolha: ", scanner);
         } while (opcaoSelecionada < 1 || opcaoSelecionada > opcoes.length);
 
         return opcoes[opcaoSelecionada - 1];
