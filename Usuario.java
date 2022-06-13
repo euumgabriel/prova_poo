@@ -31,8 +31,12 @@ class Usuario {
             int idUltimoUsuario = Integer.parseInt(ultimoUsuario.split(";")[0]);
             this.id = idUltimoUsuario + 1;
         } catch (IOException erro) {
-            System.out.println("Não foi possível cadastrar usuário!");
+            System.out.println("Erro ao trabalhar com arquivo!");
         }
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -51,10 +55,17 @@ class Usuario {
         return id;
     }
 
+    @Override
+    public String toString() {
+        return "Nome: " + this.nome + "\nEmail: " + this.email;
+    }
+
     public void cadastrarOcorrencia(Scanner scannerStr) {
         String titulo = InputUsuario.inputString("Título: ", scannerStr);
         String descricao = InputUsuario.inputString("Descrição: ", scannerStr);
 
-        new Ocorrencia(titulo, descricao, this);
+        new Ocorrencia(titulo, descricao, this).salvar();
+
+        System.out.println("Ocorrência cadastrada com sucesso!");
     }
 }
