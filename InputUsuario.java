@@ -28,8 +28,10 @@ class InputUsuario {
         }
 
         do {
-            opcaoSelecionada = inputInt("Escolha: ", scanner);
+            opcaoSelecionada = inputInt("\nEscolha: ", scanner);
         } while (opcaoSelecionada < 1 || opcaoSelecionada > opcoes.length);
+
+        System.out.println();
 
         return opcoes[opcaoSelecionada - 1];
     }

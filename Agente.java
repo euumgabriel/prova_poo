@@ -21,9 +21,11 @@ class Agente extends Usuario {
                         quantidadeOcorrenciasAgente++;
                     }
                 }
-            } else if (quantidadeOcorrenciasAgente == 0) {
-                System.out.println("Não há ocorrências cadastradas!\n");
 
+                if (quantidadeOcorrenciasAgente == 0) {
+                    System.out.println("Não há ocorrências cadastradas!\n");
+
+                }
             }
         } catch (IOException erro) {
             System.out.println("Erro ao trabalhar com arquivo!");

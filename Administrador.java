@@ -67,7 +67,7 @@ class Administrador extends Usuario {
         Agente agente = new Agente(nome, email, senha);
         this.salvarNovoAgente(agente);
 
-        System.out.println("Agente cadastrado com sucesso");
+        System.out.println("Agente cadastrado com sucesso!\n");
     }
 
     private void salvarNovoAgente(Agente agente) {

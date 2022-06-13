@@ -66,6 +66,6 @@ class Usuario {
 
         new Ocorrencia(titulo, descricao, this).salvar();
 
-        System.out.println("Ocorrência cadastrada com sucesso!");
+        System.out.println("Ocorrência cadastrada com sucesso!\n");
     }
 }
