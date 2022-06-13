@@ -10,7 +10,6 @@ class Ocorrencia {
         setDescricao(descricao);
         setId();
         setCriador(criador);
-        salvar();
     }
 
     public void setTitulo(String titulo) {
@@ -33,7 +32,7 @@ class Ocorrencia {
                 this.id = 1;
             }
         } catch (IOException erro) {
-            System.out.println("Não foi possível cadastrar ocorrência!");
+            System.out.println("Erro ao trabalhar com arquivo!");
         }
     }
 
@@ -62,13 +61,13 @@ class Ocorrencia {
         return "Título: " + this.titulo + "\nDescrição: " + this.descricao + "\nCriador: " + this.criador.getNome();
     }
 
-    private void salvar() {
+    public void salvar() {
         String ocorrenciaCSV = this.id + ";" + this.titulo + ";" + this.descricao + ";" + this.criador.getId();
 
         try {
             ManipuladorArquivo.escrever(Main.ocorrenciasFilePath, ocorrenciaCSV);
         } catch (IOException erro) {
-            System.out.println("Erro ao salvar ocorrência!");
+            System.out.println("Erro ao trabalhar com arquivo!");
         }
     }
 }
