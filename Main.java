@@ -19,9 +19,9 @@ class Main {
             System.out.println("\nOlá, " + usuarioLogado.getNome() + "!\n");
 
             if (usuarioLogado instanceof Administrador) {
-                menuAdmin(usuarioLogado, scanner, scannerStr);
+                ((Administrador) usuarioLogado).menu(scanner, scannerStr);
             } else {
-                menuAgente(usuarioLogado, scanner, scannerStr);
+                ((Agente) usuarioLogado).menu(scanner, scannerStr);
             }
 
             continuar = InputUsuario.inputString("Fazer login novamente? s/n: ", scannerStr).toLowerCase()
@@ -57,7 +57,8 @@ class Main {
                 }
             }
         } catch (IOException erro) {
-            System.out.println("Erro ao trabalhar com arquivo!");
+            System.out.println("Erro ao trabalhar com arquivo!\n");
+            return usuario;
         }
 
         if (usuario == null) {
@@ -65,48 +66,5 @@ class Main {
         }
 
         return usuario;
-    }
-
-    public static void menuAgente(Usuario usuario, Scanner scanner, Scanner scannerStr) {
-        Agente agente = (Agente) usuario;
-        String[] opcoes = { "Ver ocorrências cadastradas", "Cadastrar nova ocorrência", "Sair" };
-
-        while (true) {
-            switch (InputUsuario.selecionaOpcao(opcoes, "O que você deseja fazer?\n\n", scanner)) {
-                case "Ver ocorrências cadastradas":
-                    agente.verOcorrencias();
-                    break;
-                case "Cadastrar nova ocorrência":
-                    agente.cadastrarOcorrencia(scannerStr);
-                    break;
-                case "Sair":
-                    return;
-            }
-        }
-    }
-
-    public static void menuAdmin(Usuario usuario, Scanner scanner, Scanner scannerStr) {
-        Administrador admin = (Administrador) usuario;
-        String[] opcoes = { "Ver ocorrências cadastradas", "Cadastrar nova ocorrência", "Ver agentes cadastrados",
-                "Cadastrar novo agente", "Sair" };
-
-        while (true) {
-            switch (InputUsuario.selecionaOpcao(opcoes, "O que você deseja fazer?\n\n", scanner)) {
-                case "Ver ocorrências cadastradas":
-                    admin.verOcorrencias();
-                    break;
-                case "Cadastrar nova ocorrência":
-                    admin.cadastrarOcorrencia(scannerStr);
-                    break;
-                case "Ver agentes cadastrados":
-                    admin.verUsuarios();
-                    break;
-                case "Cadastrar novo agente":
-                    admin.cadastrarUsuario(scannerStr);
-                    break;
-                case "Sair":
-                    return;
-            }
-        }
     }
 }

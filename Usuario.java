@@ -31,7 +31,7 @@ class Usuario {
             int idUltimoUsuario = Integer.parseInt(ultimoUsuario.split(";")[0]);
             this.id = idUltimoUsuario + 1;
         } catch (IOException erro) {
-            System.out.println("Erro ao trabalhar com arquivo!");
+            System.out.println("Erro ao trabalhar com arquivo!\n");
         }
     }
 

@@ -32,7 +32,7 @@ class Ocorrencia {
                 this.id = 1;
             }
         } catch (IOException erro) {
-            System.out.println("Erro ao trabalhar com arquivo!");
+            System.out.println("Erro ao trabalhar com arquivo!\n");
         }
     }
 
@@ -67,7 +67,7 @@ class Ocorrencia {
         try {
             ManipuladorArquivo.escrever(Main.ocorrenciasFilePath, ocorrenciaCSV);
         } catch (IOException erro) {
-            System.out.println("Erro ao trabalhar com arquivo!");
+            System.out.println("Erro ao trabalhar com arquivo!\n");
         }
     }
 }

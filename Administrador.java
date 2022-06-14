@@ -36,7 +36,7 @@ class Administrador extends Usuario {
                 System.out.println("Não há ocorrências cadastradas!\n");
             }
         } catch (IOException erro) {
-            System.out.println("Erro ao trabalhar com arquivo!");
+            System.out.println("Erro ao trabalhar com arquivo!\n");
         }
     }
 
@@ -55,7 +55,7 @@ class Administrador extends Usuario {
             }
 
         } catch (IOException erro) {
-            System.out.println("Erro ao trabalhar com arquivo!");
+            System.out.println("Erro ao trabalhar com arquivo!\n");
         }
     }
 
@@ -76,7 +76,31 @@ class Administrador extends Usuario {
         try {
             ManipuladorArquivo.escrever(Main.usuariosFilePath, agenteCSV);
         } catch (IOException erro) {
-            System.out.println("Erro ao trabalhar com arquivo!");
+            System.out.println("Erro ao trabalhar com arquivo!\n");
+        }
+    }
+
+    public void menu(Scanner scanner, Scanner scannerStr) {
+        String[] opcoes = { "Ver ocorrências cadastradas", "Cadastrar nova ocorrência", "Ver agentes cadastrados",
+                "Cadastrar novo agente", "Sair" };
+
+        while (true) {
+            switch (InputUsuario.selecionaOpcao(opcoes, "O que você deseja fazer?\n\n", scanner)) {
+                case "Ver ocorrências cadastradas":
+                    this.verOcorrencias();
+                    break;
+                case "Cadastrar nova ocorrência":
+                    this.cadastrarOcorrencia(scannerStr);
+                    break;
+                case "Ver agentes cadastrados":
+                    this.verUsuarios();
+                    break;
+                case "Cadastrar novo agente":
+                    this.cadastrarUsuario(scannerStr);
+                    break;
+                case "Sair":
+                    return;
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.Scanner;
 
 class Agente extends Usuario {
     public Agente(String nome, String email, String senha) {
@@ -28,7 +29,24 @@ class Agente extends Usuario {
                 }
             }
         } catch (IOException erro) {
-            System.out.println("Erro ao trabalhar com arquivo!");
+            System.out.println("Erro ao trabalhar com arquivo!\n");
+        }
+    }
+
+    public void menu(Scanner scanner, Scanner scannerStr) {
+        String[] opcoes = { "Ver ocorrências cadastradas", "Cadastrar nova ocorrência", "Sair" };
+
+        while (true) {
+            switch (InputUsuario.selecionaOpcao(opcoes, "O que você deseja fazer?\n\n", scanner)) {
+                case "Ver ocorrências cadastradas":
+                    this.verOcorrencias();
+                    break;
+                case "Cadastrar nova ocorrência":
+                    this.cadastrarOcorrencia(scannerStr);
+                    break;
+                case "Sair":
+                    return;
+            }
         }
     }
 }
