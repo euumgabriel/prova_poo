@@ -14,15 +14,15 @@ class Administrador extends Usuario {
             if (ocorrenciasCSV.length > 0) {
                 System.out.println("Ocorrências cadastradas:\n");
 
-                for (int i = 0; i < ocorrenciasCSV.length; i++) {
-                    String[] ocorrenciaCSV = ocorrenciasCSV[i].split(";");
+                for (String s : ocorrenciasCSV) {
+                    String[] ocorrenciaCSV = s.split(";");
                     Usuario criador = null;
 
                     if (Integer.parseInt(ocorrenciaCSV[3]) == this.getId()) {
                         criador = this;
                     } else {
-                        for (int j = 0; j < usuariosCSV.length; j++) {
-                            String[] usuarioCSV = usuariosCSV[j].split(";");
+                        for (String value : usuariosCSV) {
+                            String[] usuarioCSV = value.split(";");
 
                             if ((ocorrenciaCSV[3]).equals(usuarioCSV[0])) {
                                 criador = new Usuario(usuarioCSV[1], usuarioCSV[2], usuarioCSV[3]);
